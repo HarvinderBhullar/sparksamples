@@ -1,11 +1,15 @@
-# Sparksamples - Moving Average
+# Sparksamples 
+
+* Moving Average
+* Data Collection - (machine and environment data)
+* Correlation between machine data and environment data
 
 ###Pre-requisite
 
 * Apache Spark 1.5.2
 * Cassandra 2.x Community Edition
 
-###Approach
+###Approach - Moving Average
 
 Machine data is available from public API http://machinepark.actyx.io/api/v1
 
@@ -18,16 +22,11 @@ Machine data is available from public API http://machinepark.actyx.io/api/v1
 
 *In production, post the data from CustomHttpReceiver on to a Kafka and then write separate job for analysis*
 
+###Approach - Data Collection
+
+*  Use CustomHttpReceiver, which will create a stream of JSON data
+*  Append the machine id to the returned JSON data
+*  Create CustomHttpEnvReceiverEnv to get Environment Data
+*  Store the data in Casssandra
 
 
-####Create keyspace and column family in cassandra
-
-    CREATE KEYSPACE MACHINEDATA WITH REPLICATION = { 'class' : 'SimpleStrategy', 'replication_factor' : 1 };
-  
-####Create table
-
-    CREATE TABLE moving_average (  machine_id text,  current  double,  current_alert double,  location text,  name text, state text, reading_time text, type text,  avg_current double, PRIMARY KEY (machine_id, reading_time) );
-
-####Running spark job
-
-    bin\spark-submit --class  com.hs.movingaverage.SparkStreamMain --master local[4]  <your path>\target\moving-average-0.0.1-SNAPSHOT-jar-with-dependencies.jar
