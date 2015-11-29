@@ -1,4 +1,4 @@
-# sparksamples - Moving avererage
+# Sparksamples - Moving Average
 
 ###Pre-requisite
 
