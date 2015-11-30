@@ -29,4 +29,9 @@ Machine data is available from public API http://machinepark.actyx.io/api/v1
 *  Create CustomHttpEnvReceiverEnv to get Environment Data
 *  Store the data in Casssandra
 
+###Approach - Correlating Machine Data with Environment Data
+
+*  Export the data from Cassandra collected in the Data Collection stage
+*  It is necessary to extract the data in CSV format so that others can verify thier model with the same data set
+*  Since there are not many dimension in this case, finding a pair wise correlation itself will provide the required insight.
 
