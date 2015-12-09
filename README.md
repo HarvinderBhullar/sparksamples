@@ -3,6 +3,7 @@
 * Moving Average
 * Data Collection - (machine and environment data)
 * Correlation between machine data and environment data
+* Data Prediction
 
 ###Pre-requisite
 
@@ -35,3 +36,9 @@ Machine data is available from public API http://machinepark.actyx.io/api/v1
 *  It is necessary to extract the data in CSV format so that others can verify thier model with the same data set
 *  Since there are not many dimension in this case, finding a pair wise correlation itself will provide the required insight.
 
+###Approach - Data Prediction
+
+*  Use the lathe data collected in the data collection steps
+*  Use Linear Regression Model to build the Model and compute the RMSE
+*  Save the Model
+*  Saved model can be used for predicting the value of current provided environment data is given
